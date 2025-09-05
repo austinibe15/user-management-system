@@ -1,4 +1,4 @@
-# user-management-system# User Management System with Authentication
+# User Management System with Authentication
 
 ## Description
 
