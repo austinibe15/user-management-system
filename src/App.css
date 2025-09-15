@@ -1,0 +1,222 @@
+:root {
+  --bg: #0f111a;
+  --surface: #171a23;
+  --surface-2: #1e2130;
+  --text: #e9e9f6;
+  --muted: #a6a6b8;
+  --primary: #6c7dff;
+  --primary-2: #5877ff;
+  --success: #28c76f;
+  --danger: #e74c3c;
+  --card: #1f2130;
+  --radius: 12px;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  --gap: 16px;
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Roboto, -apple-system, "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #0a0b13 0%, #111522 60%, #0a0b13 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout containers */
+.app {
+  padding: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-radius: calc(var(--radius) + 6px);
+  background: linear-gradient(135deg, rgba(108, 125, 255, 0.25), rgba(108, 125, 255, 0.05));
+  border: 1px solid rgba(108, 125, 255, 0.3);
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand .logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--primary), #4e6aff);
+  display: inline-block;
+}
+
+.brand h1 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.brand p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Add User Form Styling */
+.add-user {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+  background: rgba(255, 255, 255, 0.1); /* Soft transparent background */
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Soft border to match dark theme */
+  margin-bottom: 22px;
+}
+
+.add-input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.25); /* Darker input background */
+  color: var(--text);
+}
+
+.add-btn {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.add-btn:hover {
+  background: var(--primary-2);
+}
+
+.add-btn:active {
+  transform: translateY(1px);
+}
+
+.add-input::placeholder {
+  color: var(--muted); /* Placeholder color */
+}
+
+/* User Card Styling */
+.card {
+  background: #1f2130;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-content {
+  padding-top: 8px;
+}
+
+.user-name,
+.user-email,
+.user-age {
+  font-weight: 700; /* Bold text */
+  display: block;
+  margin-bottom: 6px;
+}
+
+.user-name {
+  color: #ffd166; /* Amber color for Name */
+}
+
+.user-email {
+  color: #93c5fd; /* Light blue for Email */
+}
+
+.user-age {
+  color: #34d399; /* Aqua-green for Age */
+}
+
+/* User List Grid Styling */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--gap);
+}
+
+/* Button Styling */
+button {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+button:hover {
+  background: var(--primary-2);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 600px) {
+  .App-header {
+    font-size: 1.5rem;
+  }
+
+  .add-user {
+    grid-template-columns: 1fr 1fr auto;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .user-name,
+  .user-email,
+  .user-age {
+    font-size: 1rem; /* Slightly smaller text for mobile */
+  }
+}
+
+@media (max-width: 400px) {
+  .add-user {
+    grid-template-columns: 1fr auto; /* Stack inputs on smaller screens */
+  }
+}
