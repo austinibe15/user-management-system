@@ -58,6 +58,33 @@ app.get('/users', authenticateJWT, async (req, res) => {
   }
 });
 
+// Add after your GET /users route
+app.post('/users', authenticateJWT, async (req, res) => {
+  const { name, email, age } = req.body;
+
+  // Basic validation
+  if (!name || !email || age == null) {
+    return res.status(400).json({ error: 'name, email, and age are required' });
+  }
+
+  try {
+    // Example: insert into DB (adjust to your db library)
+    const [result] = await pool.execute(
+      'INSERT INTO users (name, email, age) VALUES (?, ?, ?)',
+      [name, email, age]
+    );
+
+    // Fetch the created user (adjust to your DB)
+    const [rows] = await pool.execute('SELECT * FROM users WHERE id = ?', [result.insertId]);
+    const newUser = rows[0];
+
+    res.status(201).json({ user: newUser });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Update a User
 app.put('/users/:id', authenticateJWT, async (req, res) => {
   const { id } = req.params;
